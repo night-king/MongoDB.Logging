@@ -64,7 +64,8 @@ namespace MongoDB.Logging
             var os = RuntimeInformation.OSDescription;
             var process = Process.GetCurrentProcess();
             var processName = process.Id.ToString() + ":" + process.ProcessName;
-            var entry = new LogMessageEntry(logLevel, message, DateTime.Now, os, ip, processName);
+            long timestamp = (long)(DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; 
+            var entry = new LogMessageEntry(logLevel, message, timestamp, os, ip, processName);
             _processor.EnqueueMessage(entry);
         }
 

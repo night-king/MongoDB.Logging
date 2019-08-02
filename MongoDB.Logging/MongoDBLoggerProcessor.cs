@@ -33,7 +33,6 @@ namespace MongoDB.Logging
                 try
                 {
                     _messageQueue.Add(message);
-                    Console.WriteLine("Cached log count=" + _messageQueue.Count);
                     return;
                 }
                 catch (InvalidOperationException) { }

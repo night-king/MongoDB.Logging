@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MongoDB.Logging
 {
-    public  struct LogMessageEntry
+    public struct LogMessageEntry
     {
-        public readonly string Id;
         /// <summary>
         /// 时间
         /// </summary>
-        public readonly DateTime Timestamp;
+        public readonly long Timestamp;
 
         /// <summary>
         /// 消息等级
@@ -38,9 +38,8 @@ namespace MongoDB.Logging
         /// </summary>
         public readonly string ProcessName;
 
-        public LogMessageEntry(LogLevel level, string message, DateTime timestamp, string os, string ip, string processorName)
+        public LogMessageEntry(LogLevel level, string message, long timestamp, string os, string ip, string processorName)
         {
-            Id = Guid.NewGuid().ToString("N");
             Level = level;
             Message = message;
             Timestamp = timestamp;

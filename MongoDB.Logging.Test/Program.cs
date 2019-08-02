@@ -37,6 +37,7 @@ namespace MongoDB.Logging.Test
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<LogService>();
+                    services.AddHostedService<QueryService>();
                 })
                   .ConfigureLogging((hostContext, log) =>
                   {
